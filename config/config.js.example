@@ -1,0 +1,12 @@
+'use strict';
+
+var os = require('os');
+
+module.exports = {
+  merchantId: 'your merchant id',
+  publicKey: 'your public key',
+  privateKey: 'your private key',
+  key: 'path to ssl key',
+  cert: 'path to ssl cert',
+  host: os.hostname()
+};
