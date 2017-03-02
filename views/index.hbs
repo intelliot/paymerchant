@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<script src="https://www.paypalobjects.com/api/button.js?"
+     data-merchant="braintree"
+     data-id="paypal-button"
+     data-button="checkout"
+     data-color="gold"
+     data-size="medium"
+     data-shape="pill"
+     data-button_type="submit"
+     data-button_disabled="false"
+ ></script>
+<!-- Configuration options:
+  data-color: "blue", "gold", "silver"
+  data-size: "tiny", "small", "medium"
+  data-shape: "pill", "rect"
+  data-button_disabled: "false", "true"
+  data-button_type: "submit", "button"
+--->
+
+<div id="transaction-result"></div>
+
+<!-- Load the client component. -->
+<script src="https://js.braintreegateway.com/web/3.9.0/js/client.min.js"></script>
+
+<!-- Load the PayPal component. -->
+<script src="https://js.braintreegateway.com/web/3.9.0/js/paypal.min.js"></script>
+
+<script src="javascripts/index.js"></script>
