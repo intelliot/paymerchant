@@ -8,9 +8,11 @@ var app = require('../app');
 var debug = require('debug')('paymerchant:server');
 
 var config = require('../config/config');
+var http = require('http');
 var https = require('https');
 var fs = require('fs');
 var protocol = 'https';
+var server;
 
 /**
  * Get port from environment and store in Express.
@@ -19,14 +21,16 @@ var protocol = 'https';
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-if (fs.existsSync(config.key)) {
-  var server = https.createServer({
+var useHttp = process.env.USE_HTTP;
+
+if (useHttp !== '1' && fs.existsSync(config.key)) {
+  server = https.createServer({
     key: fs.readFileSync(config.key),
     cert: fs.readFileSync(config.cert)
   }, app);
 } else {
-  console.error('Missing SSL key');
-  process.exit(1);
+  server = http.createServer(app);
+  protocol = 'http';
 }
 
 /**
